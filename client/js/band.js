@@ -3,20 +3,8 @@ var ctx = document.getElementById("ctx").getContext("2d");
 var ctxbg = document.getElementById("ctx-bg").getContext("2d");
 ctx.font = '30px Arial';
 
-function sound(src) {
-    this.sound = document.createElement("audio");
-    this.sound.src = src;
-    this.sound.setAttribute("preload", "auto");
-    this.sound.setAttribute("controls", "none");
-    this.sound.style.display = "none";
-    document.body.appendChild(this.sound);
-    this.play = function(){
-      this.sound.play();
-    }
-    this.stop = function(){
-      this.sound.pause();
-    }
-  }
+var guitarImg=new Image();
+guitarImg.src = 'client/sound/guitar/guitar.png';
 
 var guitar = new InsGuitar();
 function updateCanvas(){
@@ -25,9 +13,19 @@ function updateCanvas(){
 }
 
 
-document.onkeydown = function(event){
-	if (event.keyCode === 80) {
-		guitar.pluck();
+document.onkeyup = function(event){
+	if (event.keyCode === 79) {
+		guitar.pluck(0);
+    }else if (event.keyCode === 73) {
+		guitar.pluck(1);
+    }else if (event.keyCode === 85) {
+		guitar.pluck(2);
+    }else if (event.keyCode === 188) {
+		guitar.pluck(3);
+    }else if (event.keyCode === 77) {
+		guitar.pluck(4);
+    }else if (event.keyCode === 78) {
+		guitar.pluck(5);
     }
 }
 
